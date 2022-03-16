@@ -7,10 +7,51 @@ public class Account {
     private String acctType; // [C]hecking, [S]avings, [JC] Joint Checking, [JS] Joint Savings
     private String acctName; //Name user gives to better ID their accounts
     private double acctBalance;//current balance of account
-    private User mainUser; //collection of users that are attached to the account, From USER table.
-    private User jointUser; //collection of transactions that are attached to the account, From TRANSACTION table.
+    private int mainUser; //collection of users that are attached to the account, From USER table.
+    private int jointUser; //collection of transactions that are attached to the account, From TRANSACTION table.
 
-    public Account(String type, String name,double bal, User mainUser, User jointUser){}
+    public Account(String name, String type,double bal, int mainUser, int jointUser){
+        this.acctName = name;
+        this.acctType=type;
+        this.acctBalance = bal;
+        this.mainUser = mainUser;
+        this.jointUser=jointUser;
 
 
+    }
+
+    public Account(int id,String name, String type,double bal, int mainUser, int jointUser){
+        this.acctID = id;
+        this.acctName = name;
+        this.acctType=type;
+        this.acctBalance = bal;
+        this.mainUser = mainUser;
+        this.jointUser=jointUser;
+
+
+    }
+
+    public int getAcctID() {
+        return acctID;
+    }
+
+    public String getAcctType() {
+        return acctType;
+    }
+
+    public String getAcctName() {
+        return acctName;
+    }
+
+    public double getAcctBalance() {
+        return acctBalance;
+    }
+
+    public int getMainUser() {
+        return mainUser;
+    }
+
+    public int getJointUser() {
+        return jointUser;
+    }
 }
