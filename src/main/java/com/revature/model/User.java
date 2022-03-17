@@ -7,6 +7,15 @@ public class User {
     private String userFirstName;// user's first name
     private String userLastName;// user's last name
 
+
+    public User(String userName, String password, String fName, String lName){
+        this.userName = userName;
+        this.password = password;
+        this.userFirstName = fName;
+        this.userLastName = lName;
+
+    }
+
     public User(int id, String userName, String password, String fName, String lName){
     this.userID = id;
     this.userName = userName;

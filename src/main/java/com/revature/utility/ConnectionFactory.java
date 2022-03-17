@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     private static Connection conn;
 
-    private static final String url = "jdbc:postgresql://projectzerodatabase.c3oa3kme4wem.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=PJZero";
+    private static final String url = "jdbc:postgresql://projectzerodatabase.c3oa3kme4wem.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=pjzero";
     private static final String username = "postgres";
     private static final String password = "MooDB272";
 

@@ -18,7 +18,7 @@ public class UserRepo implements DAO <User>{
 
         try (Connection connection = ConnectionFactory.getConnection()) {
 
-            String sql = "insert into user(username, password, firstname, lastname) values (?, ?, ?, ?)";
+            String sql = "insert into users (username, password, first_name, last_name) values (?, ?, ?, ?)";
 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, user.getUserName());
@@ -30,6 +30,7 @@ public class UserRepo implements DAO <User>{
             System.out.println("User creation complete!");
         } catch (SQLException e) {
             System.out.println("Your connection is bad and you should feel bad.");
+            System.out.println(e.getMessage());
         }
 
     }
@@ -37,7 +38,7 @@ public class UserRepo implements DAO <User>{
     @Override
     public User getById(int id) {
         User user = null;
-        String sql = "select * from user where id = ?";
+        String sql = "select * from users where id = ?";
 
 
 
@@ -53,8 +54,8 @@ public class UserRepo implements DAO <User>{
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
-                        resultSet.getString("firstname"),
-                        resultSet.getString("lastname")
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name")
                 );
             }
         } catch (SQLException e) {
@@ -69,7 +70,7 @@ public class UserRepo implements DAO <User>{
         User user = null;
 
         try (Connection connection = ConnectionFactory.getConnection()) {
-            String sql = "select * from user where username = ?";
+            String sql = "select * from users where username = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, username);
@@ -81,12 +82,13 @@ public class UserRepo implements DAO <User>{
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
-                        resultSet.getString("firstname"),
-                        resultSet.getString("lastname")
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name")
                 );
             }
         } catch (SQLException e) {
             System.out.println("Your connection is bad and you should feel bad.");
+            System.out.println(e.getMessage());
         }
         return user;
     }
