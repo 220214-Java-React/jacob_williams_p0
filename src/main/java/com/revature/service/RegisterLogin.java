@@ -33,11 +33,12 @@ public class RegisterLogin {
                     if (loggedIn != null){
 
                     AccountManagement.accMenu(scanner,loggedIn);
+
+
+                    }
+
+                    }
                     loggedIn = null;
-
-                    }
-
-                    }
                     break;
                 }
                 case "3": {
@@ -91,7 +92,7 @@ public class RegisterLogin {
         return builtUser;
 
     }
-
+// gather info for user log in
     private static User gatherLoginInfo(Scanner scanner, UserRepo uRepo){
 
         String username ="";

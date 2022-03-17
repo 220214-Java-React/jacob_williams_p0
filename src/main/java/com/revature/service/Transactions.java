@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
-
+//transaction menu
 public class Transactions {
     public static void transMenu(Scanner scanner, Account account, User user, AccountRepo aRepo) {
         String choice = "";

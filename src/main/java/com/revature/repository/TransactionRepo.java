@@ -64,7 +64,7 @@ public class TransactionRepo implements DAO<Transaction> {
         return trans;
     }
 
-    // retrieve transaction record using accountnum and transnumber
+    // retrieve transaction record using accountnum
     public List<Transaction> getByAccountNum(int accnum){
         List<Transaction> transList = new ArrayList<>();
         Transaction trans =null;

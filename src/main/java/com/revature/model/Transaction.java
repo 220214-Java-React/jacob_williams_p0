@@ -48,6 +48,7 @@ public class Transaction {
         return account;
     }
 
+    //make it readable
     @Override
     public String toString(){
         String str = " Transaction description: " + this.getTransDescription() + " Transaction type: "+ this.getTransType()+

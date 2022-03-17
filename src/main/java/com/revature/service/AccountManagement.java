@@ -28,6 +28,7 @@ public class AccountManagement {
                     break;
                 }
                 case "2": {
+                    //check for existing account, should move to a method, oh well
                   Account verifiedaccount = null;
                   int useid = user.getUserID();
 
@@ -67,6 +68,7 @@ public class AccountManagement {
 
 
     }
+    //gather info to create new account
     private static Account gatherCreationInfo(Scanner scanner, AccountRepo aRepo, User user){
         Account builtaccount = null;
         boolean uniqueName = false;
