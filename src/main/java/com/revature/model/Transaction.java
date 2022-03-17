@@ -12,8 +12,18 @@ public class Transaction {
     private int account; //Account ID of the account effected by the transaction, From ACCOUNT table.
 
     public Transaction(double amount, String description, String type, int acctNum) {
+
+        this.transAmount = amount;
+        this.transDescription = description;
+        this.transType = type;
+        this.account = acctNum;
     }
     public Transaction(int id,double amount, String description, String type, int acctNum) {
+        this.transID = id;
+        this.transAmount = amount;
+        this.transDescription = description;
+        this.transType = type;
+        this.account = acctNum;
     }
 
 

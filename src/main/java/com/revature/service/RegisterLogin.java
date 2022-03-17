@@ -36,8 +36,9 @@ public class RegisterLogin {
                     loggedIn = null;
 
                     }
-                        break;
+
                     }
+                    break;
                 }
                 case "3": {
                     System.out.println("Closing program, have a nice day.");

@@ -28,11 +28,12 @@ public class Transactions {
 
             switch (choice) {
                 case "1": {
-                    BalanceUpdate(Deposit(activeAccount, scanner), activeAccount, aRepo);
+                    BalanceUpdate(Deposit(activeAccount, scanner, tRepo), activeAccount, aRepo);
+
                     break;
                 }
                 case "2": {
-                    BalanceUpdate(Withdrawal(activeAccount, scanner), activeAccount, aRepo);
+                    BalanceUpdate(Withdrawal(activeAccount, scanner, tRepo), activeAccount, aRepo);
                     break;
                 }
                 case "3": {
@@ -60,16 +61,15 @@ public class Transactions {
 
 
     }
-
-    public static Transaction Deposit(Account a, Scanner scanner) {
-        Transaction t = null;
+    //create deposit transaction object for addition to the transaction db
+    public static Transaction Deposit(Account a, Scanner scanner, TransactionRepo tRepo) {
         double amount = -1.00;
         String description = "";
         String type = "Deposit";
         int accnum = a.getAcctID();
         while (amount < 1) {
             System.out.println("Enter amount for your deposit.");
-            amount = Double.parseDouble(scanner.nextLine());
+            amount = parseDoubleOrNeg(scanner.nextLine());
             if (amount < 1) {
                 System.out.println("Please enter a number one or greater for your deposit.");
             }
@@ -84,13 +84,14 @@ public class Transactions {
 
         }
 
-        t = new Transaction(amount, description, type, accnum);
+        Transaction ta = new Transaction(amount, description, type, accnum);
+        tRepo.create(ta);
 
 
-        return t;
+        return ta;
     }
-
-    public static Transaction Withdrawal(Account a, Scanner scanner) {
+//create withdrawal transaction object for addition to the transaction db
+    public static Transaction Withdrawal(Account a, Scanner scanner, TransactionRepo tRepo) {
         Transaction t = null;
         double amount = -1.00;
         String description = "";
@@ -98,7 +99,7 @@ public class Transactions {
         int accnum = a.getAcctID();
         while (amount < 1) {
             System.out.println("Enter amount for your deposit.");
-            amount = Double.parseDouble(scanner.nextLine());
+            amount = parseDoubleOrNeg(scanner.nextLine());
             if (amount < 1) {
                 System.out.println("Please enter a number one or greater for your withdrawal.");
             }
@@ -118,11 +119,12 @@ public class Transactions {
         }
 
         t = new Transaction(amount, description, type, accnum);
+        tRepo.create(t);
 
 
         return t;
     }
-
+//change the balance in account records
     public static void BalanceUpdate(Transaction t, Account a, AccountRepo aRepo) {
 
         if (t.getTransType().equals("Deposit")) {
@@ -153,6 +155,15 @@ public class Transactions {
             } catch (SQLException e) {
                 System.out.println("Your connection is bad and you should feel bad.");
             }
+        }
+    }
+//catch parsing errors when entering values for transactions
+    public static Double parseDoubleOrNeg(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a numerical value");
+            return -1.00;
         }
     }
 }
